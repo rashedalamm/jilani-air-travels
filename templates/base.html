@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b3a">
+  <title>{% block title %}JILANI AIR TRAVELS | Hajj, Umrah & Air Travel{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap">
+  <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span><span><strong>JILANI AIR TRAVELS</strong><small>HAJJ · UMRAH · AIR TRAVEL</small></span></a>
+  <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <nav class="nav-links"><a href="{{ url_for('index') }}#packages">Packages</a><a href="{{ url_for('index') }}#services">Our Services</a><a href="{{ url_for('index') }}#about">About Us</a><a class="nav-cta" href="https://wa.me/{{ whatsapp_number }}?text=Assalamu%20Alaikum%2C%20I%20want%20to%20know%20about%20your%20services" target="_blank" rel="noopener">WhatsApp Us ↗</a></nav>
+</div></header>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="container flashes">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span><span><strong>JILANI AIR TRAVELS</strong><small>YOUR JOURNEY, OUR CARE</small></span></a><p>বিশ্বস্ত সহযোগিতায় হজ, ওমরাহ ও এয়ার ট্রাভেল সেবা।</p></div><div><h4>Contact</h4><p>{{ agency_address }}</p><p>{{ agency_phone }}</p></div><div><h4>Quick Links</h4><a href="{{ url_for('index') }}#packages">Packages</a><a href="{{ url_for('index') }}#services">Visa Assistance</a><a href="{{ url_for('admin_login') }}">Admin Login</a></div></div><div class="copyright">© {{ 2026 }} JILANI AIR TRAVELS. All rights reserved.</div></footer>
+<a class="whatsapp-float" href="https://wa.me/{{ whatsapp_number }}?text=Assalamu%20Alaikum" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">☏</a>
+</body></html>
